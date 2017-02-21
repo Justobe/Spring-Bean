@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--<bean id="duke" class="Juggler">
+        <property name="beanBags" value="5"></property>
+    </bean>-->
+
+    <bean id="sonnet29" class="Sonnet29"></bean>
+    <bean id="duke" class="PoeticJuggler">
+        <constructor-arg value="15"></constructor-arg>
+        <constructor-arg ref="sonnet29"></constructor-arg>
+        <!--<constructor-arg>
+            <bean class="Sonnet29"></bean>
+        </constructor-arg>-->
+    </bean>
+
+
+    <bean id="guitar" class="Guitar" scope="prototype"></bean>
+    <bean id="piano" class="Piano" scope="prototype"></bean>
+    <bean id="saxophone" class="Saxophone" scope="prototype"></bean>
+
+    <bean id="onemanband" class="OneManBand">
+        <property name="instruments">
+            <set>
+                <ref bean="guitar"></ref>
+                <ref bean="piano"></ref>
+                <ref bean="saxophone"></ref>
+            </set>
+        </property>
+
+    </bean>
+    <bean id="beanscope" class="BeanScope" scope="singleton"></bean>
+</beans>
